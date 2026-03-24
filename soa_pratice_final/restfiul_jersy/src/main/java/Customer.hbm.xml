@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Mar 22, 2026, 12:04:20 PM by Hibernate Tools 6.5.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class catalog="soa" name="model.Customer" optimistic-lock="none"
+		table="customer">
+		<id name="cusId" type="java.lang.Integer">
+			<column name="CUS_ID" />
+			<generator class="identity" />
+		</id>
+		<property name="name" type="string">
+			<column length="255" name="NAME" />
+		</property>
+		<property name="sername" type="string">
+			<column length="30" name="SERNAME" />
+		</property>
+		<property name="username" type="string">
+			<column length="30" name="username" not-null="true" />
+		</property>
+		<property name="pwd" type="string">
+			<column length="30" name="pwd" not-null="true" />
+		</property>
+		<property name="userroles" type="string">
+			<column length="12" name="USERROLES" />
+		</property>
+		<set fetch="join" inverse="true" lazy="false" name="phonenumbers"
+			table="phonenumber" cascade="all">
+			<key>
+				<column name="CUS_ID" />
+			</key>
+			<one-to-many class="model.Phonenumber" />
+		</set>
+	</class>
+</hibernate-mapping>
